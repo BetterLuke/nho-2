@@ -1,16 +1,19 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import './Header.scss'
+import './index.scss'
 import * as avatar from '../assets/images/oval.png'
+import {withRouter} from 'react-router-dom'
+import classNames from  'classnames'
 import * as logo from '../assets/images/thoughtworks-logo.png'
 
-const MenuItem = ({url, name}) => (
-    <div className="menuitem">
-        <Link to={url}>
-            {name}
+const MenuItem = withRouter(
+    (props) => (
+    <div className={classNames('menuitem', {'menuitem__focus': props.location.pathname === props.url})}>
+        <Link to={props.url}>
+            {props.name}
         </Link>
     </div>
-)
+))
 
 const Logo = ({img, size}) => (
     <div className="logo">
@@ -30,7 +33,7 @@ const Avatar = ({img}) => (
     </div>
 )
 
-const Header = ({left_part, right_part}) => {
+const HeaderWrapper = ({left_part, right_part}) => {
     return (
         <div className="header">
             <div className="header--left">
@@ -43,9 +46,8 @@ const Header = ({left_part, right_part}) => {
     )
 }
 
-
-export default () => (
-    <Header
+export const Header = () => (
+    <HeaderWrapper
         left_part={
             [
                 <Logo img={logo} size={{
@@ -64,5 +66,11 @@ export default () => (
                 <Avatar img={avatar}/>
             ]
         }>
-    </Header>
+    </HeaderWrapper>
+)
+
+export const Content = (props) => (
+    <div className="content">
+        {props.children}
+    </div>
 )

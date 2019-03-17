@@ -12,8 +12,10 @@
 
 .header {
     background-color: #ffffff;
+    margin-bottom: 3px;
     border-bottom: 1px solid #cdcdcd;
     display: flex;
+    width: 100vw;
     flex-direction: row;
     justify-content: space-between;
     box-shadow: 0 2px 4px 0 rgba(129, 129, 129, 0.5);
@@ -47,13 +49,21 @@
         color: black;
     }
 
-    .menuitem__focus {
-        border-bottom: 4px #00b4c5;
-    }
-
     &:hover {
         a {
             color: #00b4c5;
         }
     }
+}
+
+.menuitem__focus {
+    border-bottom: 4px solid #00b4c5;
+    a {
+        color: #00b4c5;
+    }
+}
+
+.content {
+    height: 100vh;
+    overflow: scroll;
 }
