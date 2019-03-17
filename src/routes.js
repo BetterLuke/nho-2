@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route} from "react-router-dom"
+import { Route } from "react-router-dom"
 import AddCamp from "./pages/add-camp/AddCamp";
 import Home from "./pages/home/Home"
 import {AccountPage} from "./pages/account"

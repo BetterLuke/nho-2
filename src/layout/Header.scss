@@ -1,0 +1,59 @@
+@mixin vertical_center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin horizontally_center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #cdcdcd;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px 0 rgba(129, 129, 129, 0.5);
+
+    .header--left {
+        @include horizontally_center;
+        padding-left: 30px;
+    }
+
+    .header--right {
+        @include horizontally_center;
+        padding-right: 48px;
+    }
+}
+
+.menu {
+    color: #000000;
+    @include horizontally_center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.menuitem {
+    @include horizontally_center;
+    height: 60px;
+    padding: 8px;
+    font-size: 18px;
+    a {
+        color: black;
+    }
+
+    .menuitem__focus {
+        border-bottom: 4px #00b4c5;
+    }
+
+    &:hover {
+        a {
+            color: #00b4c5;
+        }
+    }
+}
