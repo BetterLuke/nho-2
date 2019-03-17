@@ -7,7 +7,7 @@ import {AccountPage} from "./pages/account"
 
 export default () => (
     <div>
-        <Route exact path='/camp' component={Home}/>
+        <Route exact path='/' component={Home}/>
         <Route exact path='/account' component={AccountPage}/>
         <Route exact path='/add-camp' component={CreateCamp}/>
     </div>

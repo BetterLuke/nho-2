@@ -31,7 +31,6 @@ class CardList extends React.Component {
             return (<Card title={card.title} description={card.description} onDelete={this.handleDel}/>)
           })
         }
-        
       </div>
     )
   }
