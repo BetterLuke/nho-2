@@ -1,45 +1,43 @@
 import React, { Component } from 'react';
 import { string, func, node } from 'prop-types';
 
-import './Cart.scss';
+import './Card.scss';
 
-class Cart extends Component {
+class Card extends Component {
     static propTypes = {
         title: string,
         description: string,
-        onClose: func,
+        onDelete: func,
         children: node,
     }
 
     render() {
-        const {title, description, onClose, children} = this.props;
+        const {title, description, onDelete, children} = this.props;
+
         return (
-            <div className='cart-container'>
-                <div className="cart-header">
-                    {onClose && (
-                        <span onClick={onClose}/>
-                    )}
-                    {title && (
-                        <div className="cart-header_title">
-                            {title}
+            <div className='card'>
+                {
+                    children ? 
+                    <div className="card-children">{children}</div> :
+                    <div className="card-content">
+                        <div className="card-header">
+                            {onDelete && (
+                                <span className="close-icon" onClick={onDelete} title='删除'/>
+                            )}
+                            {title && (
+                                <span className="card-header_title">
+                                    {title}
+                                </span>
+                            )}
                         </div>
-                    )}
-                </div>
-                <div className="cart-content">
-                    {description && (
-                        <div className="cart-content_desc">
+                        <div className="card-container" title={description}>
                             {description}
                         </div>
-                    )}
-                    {children && (
-                        <div className="cart-content_children">
-                            {children}
-                        </div>
-                    )}
-                </div>
+                    </div> 
+                }
             </div>
         )
     }
 }
 
-export default Cart;
+export default Card;
