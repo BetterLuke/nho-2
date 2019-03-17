@@ -1,0 +1,9 @@
+.header {
+    background-color: #ffffff;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #cdcdcd;
+    justify-items: flex-end;
+}
