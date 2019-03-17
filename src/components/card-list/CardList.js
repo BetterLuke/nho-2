@@ -28,7 +28,7 @@ class CardList extends React.Component {
         </Card>
         {
           this.state.cardList && this.state.cardList.map(card=>{
-            return (<Card title={card.title} description={card.description} onDelete={this.handleDel}/>)
+            return (<Card title={card.title} key={card.id} description={card.description} onDelete={this.handleDel}/>)
           })
         }
         
