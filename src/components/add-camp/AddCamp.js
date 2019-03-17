@@ -3,7 +3,7 @@ import './add-camp.scss';
 
 class AddCamp extends React.Component {
   handleAdd() {
-    
+    this.props.history.push('/add-camp');
   }
   
   render() {

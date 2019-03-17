@@ -24,7 +24,7 @@ class CardList extends React.Component {
     return (
       <div className='card-list'>
         <Card>
-          <AddCamp />
+          <AddCamp history={this.props.history}/>
         </Card>
         {
           this.state.cardList && this.state.cardList.map(card=>{
