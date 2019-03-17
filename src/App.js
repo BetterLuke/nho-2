@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
-import Home from './pages/home/Home'
-import Routes from './router'
+import React, { Component } from 'react'
+import {Header} from "./layout"
+import Routes from './routes'
 import "antd/dist/antd.css"
+import {BrowserRouter} from 'react-router-dom'
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-       <Home />
-       <Routes />
-      </div>
+        <BrowserRouter>
+            <Header />
+            <div className="content">
+                <Routes />
+            </div>
+        </BrowserRouter>
+
     );
   }
 }
