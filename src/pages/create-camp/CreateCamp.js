@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { Form, Input, Row, message } from 'antd';
+
+import API from '../../api/api';
 import './CreateCamp.scss';
 
 const { TextArea } = Input;
@@ -32,20 +34,9 @@ class CreateCamp extends Component {
     };
 
     fetchApi(title, description) {
-        fetch('http://10.205.22.91:8080/camp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title,
-                description
-            })
-        })
-        .then(res => res.json())
-        .then(res => {
-            this.handleClose();
-        })
+        API.createCamp(title, description)
+        .then(() => this.handleClose())
+        .catch(err =>  message.warning(err))
     };
 
     checkForm = (value, label) => {
