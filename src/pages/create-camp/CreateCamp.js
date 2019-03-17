@@ -25,9 +25,8 @@ class CreateCamp extends Component {
 
     handleSubmit = () => {
         const { titleValue, descriptionValue } = this.state;
-        let flag = this.checkForm(titleValue, '标题');
-        flag = this.checkForm(descriptionValue, '描述');
-        if (!flag) return;
+        if(!this.checkForm(titleValue, '标题')) return
+        if(!this.checkForm(descriptionValue, '描述')) return
 
         this.fetchApi(titleValue, descriptionValue);
     };
@@ -42,7 +41,9 @@ class CreateCamp extends Component {
                 title,
                 description
             })
-        }).then(res => res.json()).then(res => {
+        })
+        .then(res => res.json())
+        .then(res => {
             this.handleClose();
         })
     };
@@ -69,13 +70,13 @@ class CreateCamp extends Component {
                 <Form layout="inline" className="create-camp-form">
                     <Row>
                         <Form.Item label="标题">
-                            <Input placeholder="请输入标题" onChange={this.handleTitleChange}/>
+                            <Input onChange={this.handleTitleChange}/>
                         </Form.Item>
                     </Row>
                     <Row>
                         <Form.Item label="描述">
                             <div className="text-count">{descriptionValue.length}/{totalCount}</div>
-                            <TextArea placeholder={`请输入描述，最多${totalCount}个字符`} onChange={this.handleDescriptionChange} maxLength={totalCount}/>
+                            <TextArea className='ant-d-text-area' onChange={this.handleDescriptionChange} maxLength={totalCount}/>
                         </Form.Item>
                     </Row>
                     <Row className="submit-row">

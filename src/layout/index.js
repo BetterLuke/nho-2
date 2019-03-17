@@ -54,7 +54,7 @@ export default () => (
                 }}/>,
                 <Menu>
                     <MenuItem name="账户" url="/account"/>
-                    <MenuItem name="训练营" url="/camp"/>
+                    <MenuItem name="训练营" url="/"/>
                     <MenuItem name="任务卡" url="/task-card"/>
                 </Menu>
             ]
