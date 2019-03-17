@@ -45,8 +45,12 @@
     height: 60px;
     padding: 8px;
     font-size: 18px;
+
     a {
         color: black;
+        &:link {
+            text-decoration:none;
+        }
     }
 
     &:hover {

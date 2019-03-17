@@ -33,41 +33,26 @@ const Avatar = ({img}) => (
     </div>
 )
 
-const HeaderWrapper = ({left_part, right_part}) => {
+export const Header = () => {
     return (
         <div className="header">
             <div className="header--left">
-                {left_part.map(component => component)}
-            </div>
-            <div className="header--right">
-                {right_part.map(component => component)}
-            </div>
-        </div>
-    )
-}
-
-export const Header = () => (
-    <HeaderWrapper
-        left_part={
-            [
                 <Logo img={logo} size={{
                     height: '38px',
-                    width: '170px'
+                    width: '170px',
                 }}/>,
                 <Menu>
                     <MenuItem name="账户" url="/account"/>
                     <MenuItem name="训练营" url="/"/>
                     <MenuItem name="任务卡" url="/task-card"/>
                 </Menu>
-            ]
-        }
-        right_part={
-            [
-                <Avatar img={avatar}/>
-            ]
-        }>
-    </HeaderWrapper>
-)
+            </div>
+            <div className="header--right">
+                <Avatar img={avatar} />
+            </div>
+        </div>
+    )
+}
 
 export const Content = (props) => (
     <div className="content">
