@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 import { Form, Input, Row, message } from 'antd';
 import './CreateCamp.scss';
 
 const { TextArea } = Input;
 
-export default class CreateCamp extends Component {
+class CreateCamp extends Component {
     state = {
         totalCount: 300,
         descriptionValue: ''
@@ -24,12 +25,27 @@ export default class CreateCamp extends Component {
 
     handleSubmit = () => {
         const { titleValue, descriptionValue } = this.state;
-        let flag = this.checkForm(titleValue, '标题');
-        flag = this.checkForm(descriptionValue, '描述');
+        if(!this.checkForm(titleValue, '标题')) return
+        if(!this.checkForm(descriptionValue, '描述')) return
 
-        if (flag) {
-            console.log(titleValue, descriptionValue);
-        }
+        this.fetchApi(titleValue, descriptionValue);
+    };
+
+    fetchApi(title, description) {
+        fetch('http://10.205.22.91:8080/camp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title,
+                description
+            })
+        })
+        .then(res => res.json())
+        .then(res => {
+            this.handleClose();
+        })
     };
 
     checkForm = (value, label) => {
@@ -42,25 +58,25 @@ export default class CreateCamp extends Component {
     };
 
     handleClose = () => {
-        console.log('返回');
+        this.props.history.goBack();
     };
 
     render() {
         const { totalCount, descriptionValue } = this.state;
         return (
             <div className="create-camp-container">
-                <div className="back-btn">返回</div>
+                <div className="back-btn" onClick={this.handleClose}>返回</div>
                 <div className="create-camp">创建训练营</div>
                 <Form layout="inline" className="create-camp-form">
                     <Row>
                         <Form.Item label="标题">
-                            <Input placeholder="请输入标题" onChange={this.handleTitleChange}/>
+                            <Input onChange={this.handleTitleChange}/>
                         </Form.Item>
                     </Row>
                     <Row>
                         <Form.Item label="描述">
                             <div className="text-count">{descriptionValue.length}/{totalCount}</div>
-                            <TextArea placeholder={`请输入描述，最多${totalCount}个字符`} onChange={this.handleDescriptionChange} maxLength={totalCount}/>
+                            <TextArea className='ant-d-text-area' onChange={this.handleDescriptionChange} maxLength={totalCount}/>
                         </Form.Item>
                     </Row>
                     <Row className="submit-row">
@@ -72,5 +88,5 @@ export default class CreateCamp extends Component {
         )
     }
 };
-
+export default withRouter(CreateCamp);
 
